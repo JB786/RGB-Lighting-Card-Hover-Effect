@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    background: linear-gradient(to top, #1d1d1d, rgba(75, 11, 11, 0.563));
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards {
+    border: 2px solid black;
+    box-shadow: 3px 3px 20px black;
+    height: 450px;
+    width: 300px;
+    margin: 0px 45px;
+    padding: 0px 5px;
+    border-radius: 20px;
+    background: #1d1d1d;
+    color: rgba(255, 255, 255, 0.769);
+    text-align: justify;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    /* -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+            not working with Tranform 3d style. */
+}
+
+.img {
+    background: linear-gradient(#fff0 0%, #fff0 70%, #1d1d1d 100%), url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80") no-repeat center center/cover;
+    height: 200px;
+    width: 295.5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-left: -5px;
+}
+
+.first-heading {
+    color: red;
+}
+
+.second-heading {
+    color: yellowgreen;
+}
+
+.third-heading {
+    color: rgba(1, 255, 234, 0.757);
+}
+
+h1 {
+    transform: translateZ(30px);
+    margin-bottom: 4px;
+    padding: 0px 6px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.para {
+    font-size: 14px;
+    transform: translateZ(30px);
+    padding: 0px 6px;
+    height: 132px;
+}
+
+
+.rgb:hover::after {
+    content: "";
+    background: linear-gradient(45deg,
+            #ff0000 0%,
+            #ff9a00 10%,
+            #d0de21 20%,
+            #4fdc4a 30%,
+            #3fdad8 40%,
+            #2fc9e2 50%,
+            #1c7fee 60%,
+            #5f15f2 70%,
+            #ba0cf8 80%,
+            #fb07d9 90%,
+            #ff0000 100%) repeat 0% 0% / 300% 100%;
+    position: absolute;
+    height: 467px;
+    width: 325px;
+    left: -3.8%;
+    top: -2.5%;
+    border-radius: 20px;
+    filter: blur(2px);
+    /* z-index: -1; */
+    transform: translateZ(-1px);
+    /* we use this for 3D transform instead of z-index 
+            we also need to add tranform-style: preserve-3d and tranform: perspective(1000px)
+            to the .cards above otherwise .rgb::after won't hide behind .cards and tranform: translateZ(-1px) won't work.*/
+    animation: rgb 6s linear infinite;
+}
+
+@keyframes rgb {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 95px);
+    height: 50px;
+    overflow: hidden;
+}
+
+.card1 {
+    background-color: #ff0303a9;
+}
+
+.card2 {
+    background-color: rgba(170, 255, 0, 0.635);
+}
+
+.card3 {
+    background-color: rgba(1, 255, 234, 0.757);
+}
+
+.stat {
+    position: relative;
+    top: 50px;
+    border-top: 1px solid #1d1d1d;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bolder;
+    padding-top: 5px;
+    color: whitesmoke;
+}
+
+.cards:hover .stat {
+    position: relative;
+    top: 0px;
+    transition: top 1s cubic-bezier(0.615, 0.610, 0.455, 1);
+}
+
+.border2 {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    margin-bottom: -5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.border1 {
+    border-bottom-left-radius: 20px;
+    margin-left: -4px;
+}
+
+.border3 {
+    border-bottom-right-radius: 20px;
+    margin-right: -4px;
+}
+
+/* .js-tilt-glare{
+            border-radius: 20px;
+            by adding glare effect we will see the glare sharp edge if the element has border-radius therefore to fix this we will add the same border-radius amount as our element (.cards in this case) inside .js-tilt-glare. But fortunately we are not seeing that in our element in this program so we are not using it here
+        } */
